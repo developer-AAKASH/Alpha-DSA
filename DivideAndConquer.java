@@ -80,11 +80,49 @@ public class DivideAndConquer {
         }
         System.out.println();
     }
+
+    public static int searchInRotatedSortedArray (final int startIndex, final int endIndex, final int target, final int[] data) {
+        if (startIndex > endIndex) {
+            return -1;
+        }
+
+//        final int mid = (startIndex + endIndex) / 2;
+        final int mid = startIndex + (endIndex - startIndex) / 2;
+
+        if (data[mid] == target) {
+            return mid;
+        }
+
+//        mid found on Line 1:
+        if (data[startIndex] <= data[mid]) {
+//            Left of Line - 1
+            if (data[startIndex] <= target && target <= data[mid]) {
+                return searchInRotatedSortedArray (startIndex, mid - 1, target, data);
+            }
+//            Right of Line - 1
+            else {
+                return searchInRotatedSortedArray (mid + 1, endIndex, target, data);
+            }
+        }
+//        mid found on Line - 2
+        else {
+//            Right of Line - 2
+            if (data[mid] <= target && target <= data[endIndex]) {
+                return searchInRotatedSortedArray (mid + 1, endIndex, target, data);
+            }
+//            Right of Line - 1
+            else {
+                return searchInRotatedSortedArray (startIndex, mid - 1, target, data);
+            }
+        }
+    }
     public static void main(String[] args) {
-        int data[] = { 2, 5, 3, 6, 1};
+//        int data[] = { 2, 5, 3, 6, 1};
+        int data[] = { 4, 5, 6, 7, 0, 1, 2};
 
 //        mergeSort (data, 0, data.length - 1);
-        quickSort (data, 0, data.length - 1);
-        printArray (data);
+//        quickSort (data, 0, data.length - 1);
+//        printArray (data);
+        System.out.println(searchInRotatedSortedArray (0, data.length - 1, 0, data));
     }
 }
