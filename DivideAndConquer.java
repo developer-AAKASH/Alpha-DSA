@@ -10,7 +10,6 @@ public class DivideAndConquer {
 
         merge (data, start, mid, end);
     }
-
     public static void merge (int data[],final int start, final int mid, final int end) {
         int merged[] = new int[ end - start + 1];
         int left = start;
@@ -41,7 +40,6 @@ public class DivideAndConquer {
             data[left] = merged[itr];
         }
     }
-
     public static void quickSort (int data[], final int startIndex, final int endIndex) {
         if (startIndex >= endIndex) {
             return;
@@ -52,7 +50,6 @@ public class DivideAndConquer {
         quickSort (data, pivotIndex + 1, endIndex);
 
     }
-
     public static int partition (final int data[], final int startIndex, final int endIndex) {
         final int pivot = data[endIndex];
         int pivotI = startIndex - 1;
@@ -80,7 +77,6 @@ public class DivideAndConquer {
         }
         System.out.println();
     }
-
     public static int searchInRotatedSortedArray (final int startIndex, final int endIndex, final int target, final int[] data) {
         if (startIndex > endIndex) {
             return -1;
